@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://cs50.harvard.edu/python/2022/notes/1/ -->
+<html lang="en-us" class="wf-ptsans-n4-active wf-ptsans-n7-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        
+        <meta name="viewport" content="initial-scale=1, width=device-width"><meta property="og:description" content="An introduction to programming using Python, a popular language for general-purpose programming, data science, web programming, and more.">
+
+        <meta property="og:image" content="https://prod-discovery.edx-cdn.org/media/course/image/2cc794d0-316d-42f7-bbfd-25c34e4cd5df-033e46d516c0.small.png"><meta property="og:title" content="Lecture 1 - CS50&#39;s Introduction to Programming with Python">
+
+        <link href="https://cs50.harvard.edu/python/2022/favicon.ico?1727911678" rel="icon">
+
+        <!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/webfont.js.download"></script>
+
+        <!-- https://getbootstrap.com/docs/ -->
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/jquery.min.js.download"></script>
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/bootstrap.bundle.min.js.download"></script>
+
+        <!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+        <link href="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/bootstrap-table.min.css" rel="stylesheet">
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/bootstrap-table.min.js.download"></script>
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/bootstrap-table-mobile.min.js.download"></script>
+
+        <!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+        
+        <link crossorigin="anonymous" href="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/a6e66aa089.css" rel="stylesheet">
+        
+
+        <!-- https://moment.github.io/luxon/ -->
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/luxon.min.js.download"></script>
+
+        <!-- http://docs.mathjax.org/ -->
+        <!-- http://docs.mathjax.org/en/latest/options/output/chtml.html?highlight=displayAlign#the-configuration-block -->
+        <script>
+            MathJax = {
+               chtml: {
+                    displayAlign: "left"
+                }
+            };
+        </script>
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/tex-chtml.js.download"></script><style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style>
+
+        <!-- https://github.com/verlok/vanilla-lazyload -->
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/intersection-observer.js.download"></script>
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/lazyload.min.js.download"></script>
+
+        <!-- https://github.com/davidjbradshaw/iframe-resizer -->
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/iframeResizer.min.js.download"></script>
+
+        <!-- https://github.com/scratchblocks/scratchblocks/releases -->
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/scratchblocks.min.js.download"></script><style><![CDATA[.sb-label{font-family:Lucida Grande,Verdana,Arial,DejaVu Sans,sans-serif;font-weight:700;fill:#fff;font-size:10px;word-spacing:1px}.sb-obsolete{fill:#d42828}.sb-motion{fill:#4a6cd4}.sb-looks{fill:#8a55d7}.sb-sound{fill:#bb42c3}.sb-pen{fill:#0e9a6c}.sb-events{fill:#c88330}.sb-control{fill:#e1a91a}.sb-sensing{fill:#2ca5e2}.sb-operators{fill:#5cb712}.sb-variables{fill:#ee7d16}.sb-list{fill:#cc5b22}.sb-custom{fill:#632d99}.sb-custom-arg{fill:#5947b1}.sb-extension{fill:#4b4a60}.sb-grey{fill:#969696}.sb-bevel{filter:url(#bevelFilter)}.sb-input{filter:url(#inputBevelFilter)}.sb-input-number,.sb-input-number-dropdown,.sb-input-string{fill:#fff}.sb-literal-dropdown,.sb-literal-number,.sb-literal-number-dropdown,.sb-literal-string{font-weight:400;font-size:9px;word-spacing:0}.sb-literal-number,.sb-literal-number-dropdown,.sb-literal-string{fill:#000}.sb-darker{filter:url(#inputDarkFilter)}.sb-outline{stroke:#fff;stroke-opacity:.2;stroke-width:2;fill:none}.sb-comment,.sb-define-hat-cap{stroke:#632d99;stroke-width:1;fill:#8e2ec2}.sb-comment{fill:#ffffa5;stroke:#d0d1d2}.sb-comment-line{fill:#ffff80}.sb-comment-label{font-family:Helvetica,Arial,DejaVu Sans,sans-serif;font-weight:700;fill:#5c5d5f;word-spacing:0;font-size:12px}.sb-diff{fill:none;stroke:#000}.sb-diff-ins{stroke-width:2px}.sb-diff-del{stroke-width:3px}]]></style><style><![CDATA[.sb3-label{font:500 12pt Helvetica Neue,Helvetica,sans-serif;word-spacing:1pt}.sb3-literal-dropdown,.sb3-literal-number,.sb3-literal-number-dropdown,.sb3-literal-string{word-spacing:0}.sb3-diff{fill:none;stroke:#000}.sb3-diff-ins{stroke-width:2px}.sb3-diff-del{stroke-width:3px}svg .sb3-motion{fill:#4c97ff;stroke:#3373cc}svg .sb3-motion-alt{fill:#4280d7}svg .sb3-motion-dark{fill:#3373cc}svg .sb3-looks{fill:#96f;stroke:#774dcb}svg .sb3-looks-alt{fill:#855cd6}svg .sb3-looks-dark{fill:#774dcb}svg .sb3-sound{fill:#cf63cf;stroke:#bd42bd}svg .sb3-sound-alt{fill:#c94fc9}svg .sb3-sound-dark{fill:#bd42bd}svg .sb3-control{fill:#ffab19;stroke:#cf8b17}svg .sb3-control-alt{fill:#ec9c13}svg .sb3-control-dark{fill:#cf8b17}svg .sb3-events{fill:#ffbf00;stroke:#c90}svg .sb3-events-alt{fill:#e6ac00}svg .sb3-events-dark{fill:#c90}svg .sb3-sensing{fill:#5cb1d6;stroke:#2e8eb8}svg .sb3-sensing-alt{fill:#47a8d1}svg .sb3-sensing-dark{fill:#2e8eb8}svg .sb3-operators{fill:#59c059;stroke:#389438}svg .sb3-operators-alt{fill:#46b946}svg .sb3-operators-dark{fill:#389438}svg .sb3-variables{fill:#ff8c1a;stroke:#db6e00}svg .sb3-variables-alt{fill:#ff8000}svg .sb3-variables-dark{fill:#db6e00}svg .sb3-list{fill:#ff661a;stroke:#e64d00}svg .sb3-list-alt{fill:#f50}svg .sb3-list-dark{fill:#e64d00}svg .sb3-custom{fill:#ff6680;stroke:#f35}svg .sb3-custom-alt{fill:#ff4d6a}svg .sb3-custom-dark{fill:#f35}svg .sb3-extension{fill:#0fbd8c;stroke:#0b8e69}svg .sb3-extension-alt{fill:#0da57a}svg .sb3-extension-dark{fill:#0b8e69}svg .sb3-obsolete{fill:#ed4242;stroke:#ca2b2b}svg .sb3-obsolete-alt{fill:#db3333}svg .sb3-obsolete-dark{fill:#ca2b2b}svg .sb3-grey{fill:#bfbfbf;stroke:#909090}svg .sb3-grey-alt{fill:#b2b2b2}svg .sb3-grey-dark{fill:#909090}svg .sb3-label{fill:#fff}svg .sb3-input-color{stroke:#fff}svg .sb3-input-number,svg .sb3-input-string{fill:#fff}svg .sb3-literal-number,svg .sb3-literal-string{fill:#575e75}svg .sb3-custom-arg{fill:#ff6680;stroke:#f35}svg.scratchblocks-style-scratch3-high-contrast .sb3-motion{fill:#80b5ff;stroke:#3373cc}svg.scratchblocks-style-scratch3-high-contrast .sb3-motion-alt{fill:#b3d2ff}svg.scratchblocks-style-scratch3-high-contrast .sb3-motion-dark{fill:#3373cc}svg.scratchblocks-style-scratch3-high-contrast .sb3-looks{fill:#ccb3ff;stroke:#774dcb}svg.scratchblocks-style-scratch3-high-contrast .sb3-looks-alt{fill:#dcf}svg.scratchblocks-style-scratch3-high-contrast .sb3-looks-dark{fill:#774dcb}svg.scratchblocks-style-scratch3-high-contrast .sb3-sound{fill:#e19de1;stroke:#bd42bd}svg.scratchblocks-style-scratch3-high-contrast .sb3-sound-alt{fill:#ffb3ff}svg.scratchblocks-style-scratch3-high-contrast .sb3-sound-dark{fill:#bd42bd}svg.scratchblocks-style-scratch3-high-contrast .sb3-control{fill:#ffbe4c;stroke:#cf8b17}svg.scratchblocks-style-scratch3-high-contrast .sb3-control-alt{fill:#ffda99}svg.scratchblocks-style-scratch3-high-contrast .sb3-control-dark{fill:#cf8b17}svg.scratchblocks-style-scratch3-high-contrast .sb3-events{fill:#ffd966;stroke:#c90}svg.scratchblocks-style-scratch3-high-contrast .sb3-events-alt{fill:#ffecb3}svg.scratchblocks-style-scratch3-high-contrast .sb3-events-dark{fill:#c90}svg.scratchblocks-style-scratch3-high-contrast .sb3-sensing{fill:#85c4e0;stroke:#2e8eb8}svg.scratchblocks-style-scratch3-high-contrast .sb3-sensing-alt{fill:#aed8ea}svg.scratchblocks-style-scratch3-high-contrast .sb3-sensing-dark{fill:#2e8eb8}svg.scratchblocks-style-scratch3-high-contrast .sb3-operators{fill:#7ece7e;stroke:#389438}svg.scratchblocks-style-scratch3-high-contrast .sb3-operators-alt{fill:#b5e3b5}svg.scratchblocks-style-scratch3-high-contrast .sb3-operators-dark{fill:#389438}svg.scratchblocks-style-scratch3-high-contrast .sb3-variables{fill:#ffa54c;stroke:#db6e00}svg.scratchblocks-style-scratch3-high-contrast .sb3-variables-alt{fill:#fc9}svg.scratchblocks-style-scratch3-high-contrast .sb3-variables-dark{fill:#db6e00}svg.scratchblocks-style-scratch3-high-contrast .sb3-list{fill:#f96;stroke:#e64d00}svg.scratchblocks-style-scratch3-high-contrast .sb3-list-alt{fill:#ffcab0}svg.scratchblocks-style-scratch3-high-contrast .sb3-list-dark{fill:#e64d00}svg.scratchblocks-style-scratch3-high-contrast .sb3-custom{fill:#f9a;stroke:#e64d00}svg.scratchblocks-style-scratch3-high-contrast .sb3-custom-alt{fill:#ffccd5}svg.scratchblocks-style-scratch3-high-contrast .sb3-custom-dark{fill:#e64d00}svg.scratchblocks-style-scratch3-high-contrast .sb3-extension{fill:#13ecaf;stroke:#0b8e69}svg.scratchblocks-style-scratch3-high-contrast .sb3-extension-alt{fill:#75f0cd}svg.scratchblocks-style-scratch3-high-contrast .sb3-extension-dark{fill:#0b8e69}svg.scratchblocks-style-scratch3-high-contrast .sb3-obsolete{fill:#fc6666;stroke:#d32121}svg.scratchblocks-style-scratch3-high-contrast .sb3-obsolete-alt{fill:#fcb0b0}svg.scratchblocks-style-scratch3-high-contrast .sb3-obsolete-dark{fill:#d32121}svg.scratchblocks-style-scratch3-high-contrast .sb3-grey{fill:#bfbfbf;stroke:#959595}svg.scratchblocks-style-scratch3-high-contrast .sb3-grey-alt{fill:#b2b2b2}svg.scratchblocks-style-scratch3-high-contrast .sb3-grey-dark{fill:#959595}svg.scratchblocks-style-scratch3-high-contrast .sb3-label{fill:#000}svg.scratchblocks-style-scratch3-high-contrast .sb3-input-color{stroke:#fff}svg.scratchblocks-style-scratch3-high-contrast .sb3-input-number,svg.scratchblocks-style-scratch3-high-contrast .sb3-input-string{fill:#fff}svg.scratchblocks-style-scratch3-high-contrast .sb3-literal-number,svg.scratchblocks-style-scratch3-high-contrast .sb3-literal-string{fill:#000}svg.scratchblocks-style-scratch3-high-contrast .sb3-custom-arg{fill:#f9a;stroke:#e64d00}.sb3-comment{fill:#ffffa5;stroke:#d0d1d2;stroke-width:1}.sb3-comment-line{fill:#ffff80}.sb3-comment-label,.sb3-label.sb3-comment-label{font:400 12pt Helvetica Neue,Helvetica,sans-serif;fill:#000;word-spacing:0}]]></style>
+
+        <!-- https://mermaid-js.github.io/ -->
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/mermaid.min.js.download"></script>
+
+        <!-- https://github.com/twitter/twemoji -->
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/twemoji.min.js.download"></script>
+
+        
+
+        <link href="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/page.css" rel="stylesheet">
+        <link rel="stylesheet" href="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/css" media="all"><script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/jekyll-theme-cs50.js.download"></script>
+
+        <script>
+            window.CS50 = {
+                local: {"day":"numeric","hour":"numeric","minute":"numeric","month":"long","timeZoneName":"short","weekday":"long","year":"numeric"},
+                locale: "en",
+                tz: "America/New_York"
+            };
+        </script>
+
+        <title>Lecture 1 - CS50's Introduction to Programming with Python</title>
+
+
+    <style id="MJX-CHTML-styles">
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+_::-webkit-full-page-media, _:future, :root mjx-container {
+  will-change: opacity;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("https://cs50.harvard.edu/python/2022/assets/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+</style></head>
+
+    <body class="">
+
+        <div class="alert fixed-top mb-0 rounded-0 alert-success alert-dismissible" data-alert="success dismissible" data-hash="7effc11d8ee370d9f3e0a53f1b0b1824" id="alert" role="alert">
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button><p>Interested in <a href="https://cs50.harvard.edu/python/2022/#how-to-take-this-course" class="alert-link">a verified certificate or a professional certificate</a>?</p></div>
+        
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <aside class="col-lg" style="height: 680.4px; top: 57.6px;">
+ 
+                    <header><h1 data-id="cs50s-introduction-to-programming-with-python"><a href="https://cs50.harvard.edu/python/2022/">CS50’s Introduction to Programming with Python</a></h1>
+
+<p>OpenCourseWare</p>
+
+<p><a class="pr-1 small" href="https://cs50.harvard.edu/donate">Donate<i aria-hidden="true" class="fas fa-external-link-alt ps-2"></i></a></p>
+
+<p><a href="https://cs.harvard.edu/malan/">David J. Malan</a>
+<br>
+<a href="mailto:malan@harvard.edu">malan@harvard.edu</a>
+<br>
+<a class="mr-1" href="https://www.facebook.com/dmalan"><i aria-hidden="true" class="fa-brands fa-facebook-f" title="Facebook"></i><span class="sr-only">Facebook</span></a>
+<a class="mr-1" href="https://github.com/dmalan"><i aria-hidden="true" class="fa-brands fa-github" title="GitHub"></i><span class="sr-only">GitHub</span></a>
+<a class="mr-1" href="https://www.instagram.com/davidjmalan/"><i aria-hidden="true" class="fa-brands fa-instagram" title="Instagram"></i><span class="sr-only">Instagram</span></a>
+<a class="mr-1" href="https://www.linkedin.com/in/malan/"><i aria-hidden="true" class="fa-brands fa-linkedin" title="LinkedIn"></i><span class="sr-only">LinkedIn</span></a>
+<a class="mr-1" href="https://www.reddit.com/user/davidjmalan"><i aria-hidden="true" class="fa-brands fa-reddit-alien" title="Reddit"></i><span class="sr-only">Reddit</span></a>
+<a class="mr-1" href="https://www.threads.net/@davidjmalan"><i aria-hidden="true" class="fa-brands fa-threads" title="Threads"></i><span class="sr-only">Threads</span></a>
+<a class="mr-1" href="https://twitter.com/davidjmalan"><i aria-hidden="true" class="fa-brands fa-twitter" title="Twitter"></i><span class="sr-only">Twitter</span></a></p></header>
+
+                    
+
+                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-lg-none" data-bs-target="aside &gt; nav" data-bs-toggle="collapse">
+                        Menu
+                    </button>
+
+                    <nav class="collapse d-lg-block" id="nav"><hr>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/zoom/"><i class="fa-solid fa-video me-2"></i>Zoom Meetings<span class="badge ms-2 p-1 text-bg-warning">new</span></a></li>
+</ul>
+
+<!-- Tools -->
+<hr class="small">
+
+<ul class="small fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.ai/"><i class="fa-solid fa-duck pe-2 text-decoration-none"></i>CS50.ai</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.edx.org/ed"><i class="fa-solid fa-comment-question pe-2 text-decoration-none"></i>Ed Discussion</a> for Q&amp;A</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.dev/"><i class="fa-solid fa-laptop pe-2 text-decoration-none"></i>Visual Studio Code</a></li>
+</ul>
+
+<!-- Course Nav -->
+<hr>
+
+<ol start="0">
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/0/">Functions, Variables</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/1/">Conditionals</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/2/">Loops</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/3/">Exceptions</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/4/">Libraries</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/5/">Unit Tests</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/6/">File I/O</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/7/">Regular Expressions</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/8/">Object-Oriented Programming</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/weeks/9/">Et Cetera</a></li>
+</ol>
+
+<hr>
+
+<!-- Final project spec, seminars, shorts -->
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/project/">Final Project</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/gallery/">Gallery of Final Projects<span aria-hidden="true" class="ps-2 text-decoration-none"><img draggable="false" class="emoji" alt="🖼️" src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/1f5bc.png"> </span></a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/shorts/">Shorts</a></li>
+</ul>
+
+<!-- Items that might usually appear in an academic syllabus -->
+<hr>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/honesty/">Academic Honesty</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/certificate/">CS50 Certificate</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/faqs/">FAQs</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.me/cs50p">Gradebook</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/staff/">Staff</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span></li>
+</ul>
+
+<!-- Where to watch or take the class course -->
+<hr>
+
+<ul class="small fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://apps.apple.com/us/app/cs50/id1631064453">Apple TV</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.edx.org/python">edX</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://play.google.com/store/apps/details?id=edu.harvard.cs50.googletv">Google TV</a></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span></li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://youtube.com/playlist?list=PLhQjrBD2T3817j24-GogXmWqO5Q5vYy0V">YouTube</a></li>
+</ul>
+
+<!-- Manual page, style guide, other docs -->
+
+<!-- Status Page -->
+<hr>
+
+<ul class="small fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.statuspage.io/">Status Page</a></li>
+</ul>
+
+<!-- Communities -->
+<hr>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/communities/"><strong>Communities</strong></a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.bsky.social/">Bluesky</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.clubhouse.com/club/cs50">Clubhouse</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://discord.gg/cs50">Discord</a> <span class="badge bg-light ms-1 py-1 rounded-pill text-dark">Q&amp;A</span></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.edx.org/ed">Ed</a> <span class="badge bg-light ms-1 py-1 rounded-pill text-dark">Q&amp;A</span></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.facebook.com/groups/cs50/">Facebook Group</a> <span class="badge bg-light ms-1 py-1 rounded-pill text-dark">Q&amp;A</span></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.facebook.com/cs50/">Facebook Page</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://github.com/cs50">GitHub</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://gitter.im/cs50/x">Gitter</a> <span class="badge bg-light ms-1 py-1 rounded-pill text-dark">Q&amp;A</span></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://instagram.com/cs50">Instagram</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.linkedin.com/groups/7437240/">LinkedIn Group</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.linkedin.com/school/CS50/">LinkedIn Page</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.medium.com/">Medium</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.quora.com/topic/CS50">Quora</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.reddit.com/r/cs50/">Reddit</a> <span class="badge bg-light ms-1 py-1 rounded-pill text-dark">Q&amp;A</span></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.edx.org/slack">Slack</a> <span class="badge bg-light ms-1 py-1 rounded-pill text-dark">Q&amp;A</span></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.snapchat.com/add/cs50">Snapchat</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://soundcloud.com/cs50">SoundCloud</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.stackexchange.com/">Stack Exchange</a> <span class="badge bg-light ms-1 py-1 rounded-pill text-dark">Q&amp;A</span></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://t.me/cs50x">Telegram</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.tiktok.com/@cs50">TikTok</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://www.threads.net/@cs50">Threads</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://twitter.com/cs50">Twitter Account</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://twitter.com/i/communities/1722308663522594923">Twitter Community</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://www.youtube.com/subscription_center?add_user=cs50tv">YouTube</a></li>
+</ul>
+
+<!-- Courses -->
+<hr>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/python/2022/courses/"><strong>Courses</strong></a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x">CS50x</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/ai">CS50 AI</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/business">CS50 Business</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/cybersecurity">CS50 Cybersecurity</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/law">CS50 for Lawyers</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/python">CS50 Python</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/r">CS50 R</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/scratch">CS50 Scratch</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/sql">CS50 SQL</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/web">CS50 Web</a></li>
+</ul>
+
+<!-- Harvard Shop -->
+<hr>
+
+<p><a href="https://cs50.harvardshop.com/"><img src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/shop.png" alt="Harvard Shop"></a></p>
+
+<!-- Legal -->
+<hr>
+
+<p><a href="https://cs50.harvard.edu/python/2022/license/" class="small"><i class="fab fa-creative-commons me-1"></i>License</a></p></nav>
+
+                    <footer></footer>
+
+                </aside>
+
+                <main class="col-lg" style="margin-bottom: 312px; margin-top: 57.6px;">
+
+                    <a data-id="" id="lecture-1" style="top: -57.6px;"></a><h1 class="no_toc"><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#lecture-1">Lecture 1</a></h1>
+
+<ul id="markdown-toc">
+  <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#conditionals" id="markdown-toc-conditionals">Conditionals</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#if-statements" id="markdown-toc-if-statements">if Statements</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#control-flow-elif-and-else" id="markdown-toc-control-flow-elif-and-else">Control Flow, elif, and else</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#or" id="markdown-toc-or">or</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#and" id="markdown-toc-and">and</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#modulo" id="markdown-toc-modulo">Modulo</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#creating-our-own-parity-function" id="markdown-toc-creating-our-own-parity-function">Creating Our Own Parity Function</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#pythonic" id="markdown-toc-pythonic">Pythonic</a></li>
+  <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#match" id="markdown-toc-match"><code class="language-plaintext highlighter-rouge">match</code></a>    <ul>
+      <li><a href="https://cs50.harvard.edu/python/2022/notes/1/#summing-up" id="markdown-toc-summing-up">Summing Up</a></li>
+    </ul>
+  </li>
+</ul>
+
+<a data-id="" id="conditionals" style="top: -57.6px;"></a><h2><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#conditionals">Conditionals</a></h2>
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Conditionals allow you, the programmer, to allow your program to make decisions: As if your program has the choice between taking the left-hand road or the right-hand road based upon certain conditions.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Built within Python are a set of “operators” that are used to ask mathematical questions.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><code class="language-plaintext highlighter-rouge">&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;</code> symbols are probably quite familiar to you.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><code class="language-plaintext highlighter-rouge">&gt;=</code> denotes “greater than or equal to.”</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><code class="language-plaintext highlighter-rouge">&lt;=</code> denotes “less than or equal to.”</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><code class="language-plaintext highlighter-rouge">==</code> denotes “equals, though do notice the double equal sign! A single equal sign would assign a value. Double equal signs are used to compare variables.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><code class="language-plaintext highlighter-rouge">!=</code> denotes “not equal to.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Conditional statements compare a left-hand term to a right-hand term.</li>
+</ul>
+
+<a data-id="" id="if-statements" style="top: -57.6px;"></a><h2><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#if-statements">if Statements</a></h2>
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>In your terminal window, type <code class="language-plaintext highlighter-rouge">code compare.py</code>. This will create a brand new file called “compare.”</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>In the text editor window, begin with the following:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s y? </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is less than y</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice how your program takes the input of the user for both x and y, casting them as integers and saving them into their respective x and y variables. Then, the <code class="language-plaintext highlighter-rouge">if</code> statement compares x and y. If the condition of <code class="language-plaintext highlighter-rouge">x &lt; y</code> is met, the <code class="language-plaintext highlighter-rouge">print</code> statement is executed.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><code class="language-plaintext highlighter-rouge">if</code> statements use <code class="language-plaintext highlighter-rouge">bool</code> or boolean values (true or false) to decide whether or not to execute. If the statement of <code class="language-plaintext highlighter-rouge">x &gt; y</code> is true, the compiler will register it as <code class="language-plaintext highlighter-rouge">true</code> and execute the code.</li>
+</ul>
+
+<a data-id="" id="control-flow-elif-and-else" style="top: -57.6px;"></a><h2><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#control-flow-elif-and-else">Control Flow, elif, and else</a></h2>
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>Further revise your code as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s y? </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is less than y</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is greater than y</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is equal to y</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice how you are providing a series of <code class="language-plaintext highlighter-rouge">if</code> statements. First, the first <code class="language-plaintext highlighter-rouge">if</code> statement is evaluated. Then, the second <code class="language-plaintext highlighter-rouge">if</code> statement runs its evaluation. Finally, the last <code class="language-plaintext highlighter-rouge">if</code> statement runs its evaluation. This flow of decisions is called “control flow.”</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>Our code can be represented as follows:</p>
+
+    <div class="mermaid" data-original-code="flowchart TD
+  A([start]) --&gt; B{x &lt; y}
+  B -- True --&gt; C[&quot;#quot;x is less than y#quot;&quot;]
+  C --&gt; D{x &gt; y}
+  D -- True --&gt; E[&quot;#quot;x is greater than y#quot;&quot;]
+  E --&gt; F{x == y}
+  F -- True --&gt; G[&quot;#quot;x is equal to y#quot;&quot;]
+  G --&gt; H([stop])
+  B -- False --&gt; D
+  D -- False --&gt; F
+  F -- False --&gt; H
+" data-processed="true"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 247.60000610351562 903.7999877929688" style="max-width: 247.60000610351562px;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100%" id="mermaid-1728020486417"><style>#mermaid-1728020486417{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}#mermaid-1728020486417 .error-icon{fill:#a44141;}#mermaid-1728020486417 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-1728020486417 .edge-thickness-normal{stroke-width:2px;}#mermaid-1728020486417 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1728020486417 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1728020486417 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1728020486417 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1728020486417 .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-1728020486417 .marker.cross{stroke:lightgrey;}#mermaid-1728020486417 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-1728020486417 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#ccc;}#mermaid-1728020486417 .cluster-label text{fill:#F9FFFE;}#mermaid-1728020486417 .cluster-label span,#mermaid-1728020486417 p{color:#F9FFFE;}#mermaid-1728020486417 .label text,#mermaid-1728020486417 span,#mermaid-1728020486417 p{fill:#ccc;color:#ccc;}#mermaid-1728020486417 .node rect,#mermaid-1728020486417 .node circle,#mermaid-1728020486417 .node ellipse,#mermaid-1728020486417 .node polygon,#mermaid-1728020486417 .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-1728020486417 .flowchart-label text{text-anchor:middle;}#mermaid-1728020486417 .node .label{text-align:center;}#mermaid-1728020486417 .node.clickable{cursor:pointer;}#mermaid-1728020486417 .arrowheadPath{fill:lightgrey;}#mermaid-1728020486417 .edgePath .path{stroke:lightgrey;stroke-width:2.0px;}#mermaid-1728020486417 .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-1728020486417 .edgeLabel{background-color:hsl(0, 0%, 34.4117647059%);text-align:center;}#mermaid-1728020486417 .edgeLabel rect{opacity:0.5;background-color:hsl(0, 0%, 34.4117647059%);fill:hsl(0, 0%, 34.4117647059%);}#mermaid-1728020486417 .labelBkg{background-color:rgba(87.75, 87.75, 87.75, 0.5);}#mermaid-1728020486417 .cluster rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:rgba(255, 255, 255, 0.25);stroke-width:1px;}#mermaid-1728020486417 .cluster text{fill:#F9FFFE;}#mermaid-1728020486417 .cluster span,#mermaid-1728020486417 p{color:#F9FFFE;}#mermaid-1728020486417 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(20, 1.5873015873%, 12.3529411765%);border:1px solid rgba(255, 255, 255, 0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1728020486417 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#ccc;}#mermaid-1728020486417 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="10" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="0" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-B" id="L-A-B-0" d="M146.1500005722046,39L146.1500005722046,43.166666666666664C146.1500005722046,47.333333333333336,146.1500005722046,55.666666666666664,146.23333390553793,64.08333365122476C146.31666723887125,72.50000063578285,146.48333390553793,81.00000127156572,146.56666723887125,85.25000158945716L146.6500005722046,89.50000190734859"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-C" id="L-B-C-0" d="M128.01203366705514,158.46203729101757L121.0600279287227,167.65169875976724C114.10802219039027,176.84136022851692,100.2040107137254,195.2206831660163,93.25200497539298,210.57701130143263C86.29999923706055,225.93333943684897,86.29999923706055,238.26667277018228,86.29999923706055,244.43333943684897L86.29999923706055,250.60000610351562"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-D" id="L-C-D-0" d="M86.29999923706055,289.6000061035156L86.29999923706055,293.7666727701823C86.29999923706055,297.93333943684894,86.29999923706055,306.2666727701823,92.96225782738823,318.07941408448715C99.6245164177159,329.8921553987921,112.94903359837126,345.18430469406854,119.61129218869894,352.83037934170676L126.2735507790266,360.47645398934503"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-E" id="L-D-E-0" d="M126.85162804193068,407.90163776940886L118.95969003494224,417.28470017567923C111.06775202795377,426.6677625819496,95.2838760139769,445.43388739449045,87.39193800698844,460.9836164674275C79.5,476.53334554036456,79.5,488.86667887369794,79.5,495.03334554036456L79.5,501.20001220703125"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-E LE-F" id="L-E-F-0" d="M79.5,540.2000122070312L79.5,544.3666788736979C79.5,548.5333455403646,79.5,556.8666788736979,86.88400538390226,569.0910066006049C94.26801076780453,581.315334327512,109.03602153560905,597.4306564479928,116.42002691951132,605.4883175082331L123.80403230341359,613.5459785684735"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-F LE-G" id="L-F-G-0" d="M127.06747328183394,666.7174891128276L120.43956094103838,676.0645773124475C113.8116486002428,685.4116655120673,100.55582391865168,704.105841911307,93.92791157785611,719.6195967775935C87.29999923706055,735.1333516438802,87.29999923706055,747.4666849772135,87.29999923706055,753.6333516438802L87.29999923706055,759.8000183105469"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-H" id="L-G-H-0" d="M87.29999923706055,798.8000183105469L87.29999923706055,802.9666849772135C87.29999923706055,807.1333516438802,87.29999923706055,815.4666849772135,92.8102989875422,823.8000183105469C98.32059873802386,832.1333516438802,109.34119823898716,840.4666849772135,114.85149798946883,844.6333516438802L120.36179773995046,848.8000183105469"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-D" id="L-B-D-0" d="M165.28796585410743,158.46203509956678L172.0733051963143,167.65169693355824C178.85864453852116,176.84135876754974,192.42932322293487,195.22068243553267,199.21466256514177,213.82701093619082C206.00000190734863,232.43333943684897,206.00000190734863,251.26667277018228,206.00000190734863,268.1000061035156C206.00000190734863,284.93333943684894,206.00000190734863,299.7666727701823,199.50440968791145,314.8294144244939C193.00881746847426,329.8921560788055,180.01763302959992,345.1843060540953,173.52204081016274,352.8303810417403L167.02644859072558,360.4764560293852"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-F" id="L-D-F-0" d="M166.44837137816796,407.90163567902187L174.17364300587482,417.28469843369004C181.8989146335817,426.6677611883583,197.34945788899543,445.4338866976948,205.0747295167023,464.23361611902965C212.80000114440918,483.03334554036456,212.80000114440918,501.86667887369794,212.80000114440918,518.7000122070312C212.80000114440918,535.5333455403646,212.80000114440918,550.3666788736979,205.58266212330173,565.841006932516C198.36532310219425,581.3153349913341,183.93064505997935,597.4306577756371,176.7133060388719,605.4883191677885L169.49596701776446,613.54598055994"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-F LE-H" id="L-F-H-0" d="M166.2325262997843,666.7174868609216L172.69377223437834,676.0645754358592C179.15501816897242,685.4116640107967,192.0775100381605,704.1058411606718,198.53875597275456,722.869596402276C205.00000190734863,741.6333516438802,205.00000190734863,760.4666849772135,205.00000190734863,777.3000183105469C205.00000190734863,794.1333516438802,205.00000190734863,808.9666849772135,199.489702156867,820.5500183105469C193.97940240638533,832.1333516438802,182.958802905422,840.4666849772135,177.44850315494037,844.6333516438802L171.93820340445873,848.8000183105469"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g transform="translate(86.29999923706055, 213.60000610351562)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignobject height="24" width="32"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">True</span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g transform="translate(79.5, 464.20001220703125)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignobject height="24" width="32"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">True</span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g transform="translate(87.29999923706055, 722.8000183105469)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignobject height="24" width="32"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">True</span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g transform="translate(206.00000190734863, 270.1000061035156)" class="edgeLabel"><g transform="translate(-18.80000114440918, -12)" class="label"><foreignobject height="24" width="37.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">False</span></div></foreignobject></g></g><g transform="translate(212.80000114440918, 520.7000122070312)" class="edgeLabel"><g transform="translate(-18.80000114440918, -12)" class="label"><foreignobject height="24" width="37.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">False</span></div></foreignobject></g></g><g transform="translate(205.00000190734863, 779.3000183105469)" class="edgeLabel"><g transform="translate(-18.80000114440918, -12)" class="label"><foreignobject height="24" width="37.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">False</span></div></foreignobject></g></g></g><g class="nodes"><g transform="translate(146.1500005722046, 19.5)" id="flowchart-A-40" class="node default default flowchart-label"><rect height="39" width="59.150001525878906" y="-19.5" x="-29.575000762939453" ry="19.5" rx="19.5" style=""></rect><g transform="translate(-17.200000762939453, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="34.400001525878906"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">start</span></div></foreignobject></g></g><g transform="translate(146.1500005722046, 132.8000030517578)" id="flowchart-B-41" class="node default default flowchart-label"><polygon style="" transform="translate(-43.80000114440918,43.80000114440918)" class="label-container" points="43.80000114440918,0 87.60000228881836,-43.80000114440918 43.80000114440918,-87.60000228881836 0,-43.80000114440918"></polygon><g transform="translate(-16.80000114440918, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="33.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">x &lt; y</span></div></foreignobject></g></g><g transform="translate(86.29999923706055, 270.1000061035156)" id="flowchart-C-43" class="node default default flowchart-label"><rect height="39" width="131.8000030517578" y="-19.5" x="-65.9000015258789" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-58.400001525878906, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="116.80000305175781"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is less than y"</span></div></foreignobject></g></g><g transform="translate(146.1500005722046, 383.40000915527344)" id="flowchart-D-45" class="node default default flowchart-label"><polygon style="" transform="translate(-43.80000114440918,43.80000114440918)" class="label-container" points="43.80000114440918,0 87.60000228881836,-43.80000114440918 43.80000114440918,-87.60000228881836 0,-43.80000114440918"></polygon><g transform="translate(-16.80000114440918, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="33.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">x &gt; y</span></div></foreignobject></g></g><g transform="translate(79.5, 520.7000122070312)" id="flowchart-E-47" class="node default default flowchart-label"><rect height="39" width="159" y="-19.5" x="-79.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-72, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="144"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is greater than y"</span></div></foreignobject></g></g><g transform="translate(146.1500005722046, 638.0000152587891)" id="flowchart-F-49" class="node default default flowchart-label"><polygon style="" transform="translate(-47.80000114440918,47.80000114440918)" class="label-container" points="47.80000114440918,0 95.60000228881836,-47.80000114440918 47.80000114440918,-95.60000228881836 0,-47.80000114440918"></polygon><g transform="translate(-20.80000114440918, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="41.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">x == y</span></div></foreignobject></g></g><g transform="translate(87.29999923706055, 779.3000183105469)" id="flowchart-G-51" class="node default default flowchart-label"><rect height="39" width="127.80000305175781" y="-19.5" x="-63.900001525878906" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-56.400001525878906, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="112.80000305175781"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is equal to y"</span></div></foreignobject></g></g><g transform="translate(146.1500005722046, 868.3000183105469)" id="flowchart-H-53" class="node default default flowchart-label"><rect height="39" width="55.14999961853027" y="-19.5" x="-27.574999809265137" ry="19.5" rx="19.5" style=""></rect><g transform="translate(-15.199999809265137, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="30.399999618530273"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">stop</span></div></foreignobject></g></g></g></g></g></svg></div>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>This program can be improved by not asking three consecutive questions. After all, not all three questions can have an outcome of <code class="language-plaintext highlighter-rouge">true</code>! Revise your program as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s y? </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is less than y</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is greater than y</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is equal to y</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice how the use of <code class="language-plaintext highlighter-rouge">elif</code> allows the program to make fewer decisions. First, the <code class="language-plaintext highlighter-rouge">if</code> statement is evaluated. If this statement is found to be true, all the <code class="language-plaintext highlighter-rouge">elif</code> statements will not be run at all. However, if the <code class="language-plaintext highlighter-rouge">if</code> statement is evaluated and found to be false, the first <code class="language-plaintext highlighter-rouge">elif</code> will be evaluated. If this is true, it will not run the final evaluation.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>Our code can be represented as follows:</p>
+
+    <div class="mermaid" data-original-code="flowchart TD
+  A([start]) --&gt; B{x &lt; y}
+  B -- True --&gt; C[&quot;#quot;x is less than y#quot;&quot;]
+  B -- False --&gt; D{x &gt; y}
+  D -- True --&gt; E[&quot;#quot;x is greater than y#quot;&quot;]
+  D -- False --&gt; F{x == y}
+  F -- True --&gt; G[&quot;#quot;x is equal to y#quot;&quot;]
+  G --&gt; H([stop])
+  F -- False --&gt; H
+  C --&gt; H
+  E --&gt; H
+" data-processed="true"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 607.2000122070312 725.800048828125" style="max-width: 607.2000122070312px;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100%" id="mermaid-1728020486429"><style>#mermaid-1728020486429{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}#mermaid-1728020486429 .error-icon{fill:#a44141;}#mermaid-1728020486429 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-1728020486429 .edge-thickness-normal{stroke-width:2px;}#mermaid-1728020486429 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1728020486429 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1728020486429 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1728020486429 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1728020486429 .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-1728020486429 .marker.cross{stroke:lightgrey;}#mermaid-1728020486429 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-1728020486429 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#ccc;}#mermaid-1728020486429 .cluster-label text{fill:#F9FFFE;}#mermaid-1728020486429 .cluster-label span,#mermaid-1728020486429 p{color:#F9FFFE;}#mermaid-1728020486429 .label text,#mermaid-1728020486429 span,#mermaid-1728020486429 p{fill:#ccc;color:#ccc;}#mermaid-1728020486429 .node rect,#mermaid-1728020486429 .node circle,#mermaid-1728020486429 .node ellipse,#mermaid-1728020486429 .node polygon,#mermaid-1728020486429 .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-1728020486429 .flowchart-label text{text-anchor:middle;}#mermaid-1728020486429 .node .label{text-align:center;}#mermaid-1728020486429 .node.clickable{cursor:pointer;}#mermaid-1728020486429 .arrowheadPath{fill:lightgrey;}#mermaid-1728020486429 .edgePath .path{stroke:lightgrey;stroke-width:2.0px;}#mermaid-1728020486429 .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-1728020486429 .edgeLabel{background-color:hsl(0, 0%, 34.4117647059%);text-align:center;}#mermaid-1728020486429 .edgeLabel rect{opacity:0.5;background-color:hsl(0, 0%, 34.4117647059%);fill:hsl(0, 0%, 34.4117647059%);}#mermaid-1728020486429 .labelBkg{background-color:rgba(87.75, 87.75, 87.75, 0.5);}#mermaid-1728020486429 .cluster rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:rgba(255, 255, 255, 0.25);stroke-width:1px;}#mermaid-1728020486429 .cluster text{fill:#F9FFFE;}#mermaid-1728020486429 .cluster span,#mermaid-1728020486429 p{color:#F9FFFE;}#mermaid-1728020486429 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(20, 1.5873015873%, 12.3529411765%);border:1px solid rgba(255, 255, 255, 0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1728020486429 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#ccc;}#mermaid-1728020486429 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="10" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="0" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-B" id="L-A-B-0" d="M319.15000438690186,39L319.15000438690186,43.166666666666664C319.15000438690186,47.333333333333336,319.15000438690186,55.666666666666664,319.23333772023517,64.08333365122476C319.31667105356854,72.50000063578285,319.48333772023517,81.00000127156572,319.56667105356854,85.25000158945716L319.65000438690186,89.50000190734859"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-C" id="L-B-C-0" d="M286.4443458962666,143.89434570553192L249.68695516786866,155.51195577186255C212.9295644394707,167.12956583819314,139.4147829826748,190.3647859708544,102.65739225427687,215.449063212478C65.9000015258789,240.53334045410156,65.9000015258789,267.4666748046875,65.9000015258789,294.40000915527344C65.9000015258789,321.3333435058594,65.9000015258789,348.2666778564453,65.9000015258789,375.86667887369794C65.9000015258789,403.4666798909505,65.9000015258789,431.7333475748698,65.9000015258789,460.00001525878906C65.9000015258789,488.2666829427083,65.9000015258789,516.5333506266276,65.9000015258789,536.8333511352539C65.9000015258789,557.1333516438802,65.9000015258789,569.4666849772135,65.9000015258789,575.6333516438802L65.9000015258789,581.8000183105469"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-D" id="L-B-D-0" d="M343.6234479783762,153.12655678999533L355.82787417362033,163.20546500891538C368.0323003688645,173.28437322783543,392.4411527593529,193.44218966567553,404.7289122879304,209.77109820248702C417.016671816508,226.10000673929855,417.1833384831746,238.60000737508145,417.266671816508,244.8500076929729L417.35000514984137,251.10000801086437"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-E" id="L-D-E-0" d="M388.5237300431852,309.8737351930265L367.319775544614,320.76144802869396C346.11582104604275,331.6491608643614,303.70791204890025,353.42458653569633,282.50395755032906,378.44563321332345C261.3000030517578,403.4666798909505,261.3000030517578,431.7333475748698,261.3000030517578,460.00001525878906C261.3000030517578,488.2666829427083,261.3000030517578,516.5333506266276,261.3000030517578,536.8333511352539C261.3000030517578,557.1333516438802,261.3000030517578,569.4666849772135,261.3000030517578,575.6333516438802L261.3000030517578,581.8000183105469"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-F" id="L-D-F-0" d="M441.21174984941655,314.83826178541045L453.26812585997726,324.89855352234724C465.3245018705379,334.95884525928403,489.43725389165934,355.0794287331576,501.5769632355535,371.38972078798594C513.7166725794475,387.70001284281426,513.8833392461142,400.2000134785973,513.9666725794476,406.45001379648875L514.050005912781,412.7000141143803"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-F LE-G" id="L-F-G-0" d="M494.4674786224102,488.71748911282714L487.8395662816147,498.06457731244706C481.2116539408191,507.41166551206703,467.95582925922787,526.1058419113069,461.3279169184323,541.6195967775935C454.7000045776367,557.1333516438802,454.7000045776367,569.4666849772135,454.7000045776367,575.6333516438802L454.7000045776367,581.8000183105469"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-H" id="L-G-H-0" d="M454.7000045776367,620.8000183105469L454.7000045776367,624.9666849772135C454.7000045776367,629.1333516438802,454.7000045776367,637.4666849772135,443.1791712443034,646.9350794545155C431.65833791097003,656.4034739318175,408.6166712443034,667.0069295530882,397.09583791097003,672.3086573637235L385.5750045776367,677.6103851743588"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-F LE-H" id="L-F-H-0" d="M533.6325316403603,488.71748686092224L540.0937775749544,498.0645754358597C546.5550235095485,507.4116640107971,559.4775153787367,526.105841160672,565.9387613133307,544.8695964022761C572.4000072479248,563.6333516438802,572.4000072479248,582.4666849772135,572.4000072479248,599.3000183105469C572.4000072479248,616.1333516438802,572.4000072479248,630.9666849772135,541.2625068028768,644.8461256532854C510.1250063578288,658.7255663293572,447.85000546773273,671.6511143481674,416.71250502268475,678.1138883575726L385.5750045776367,684.5766623669778"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-H" id="L-C-H-0" d="M65.9000015258789,620.8000183105469L65.9000015258789,624.9666849772135C65.9000015258789,629.1333516438802,65.9000015258789,637.4666849772135,109.98750178019206,648.3498656662837C154.07500203450522,659.2330463553538,242.2500025431315,672.6660744001607,286.33750279744464,679.3825884225643L330.4250030517578,686.0991024449677"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-E LE-H" id="L-E-H-0" d="M261.3000030517578,620.8000183105469L261.3000030517578,624.9666849772135C261.3000030517578,629.1333516438802,261.3000030517578,637.4666849772135,272.8208363850911,646.9350794545155C284.3416697184245,656.4034739318175,307.3833363850911,667.0069295530882,318.9041697184245,672.3086573637235L330.4250030517578,677.6103851743588"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g transform="translate(65.9000015258789, 375.20001220703125)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignobject height="24" width="32"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">True</span></div></foreignobject></g></g><g transform="translate(416.8500051498413, 213.60000610351562)" class="edgeLabel"><g transform="translate(-18.80000114440918, -12)" class="label"><foreignobject height="24" width="37.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">False</span></div></foreignobject></g></g><g transform="translate(261.3000030517578, 460.00001525878906)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignobject height="24" width="32"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">True</span></div></foreignobject></g></g><g transform="translate(513.5500059127808, 375.20001220703125)" class="edgeLabel"><g transform="translate(-18.80000114440918, -12)" class="label"><foreignobject height="24" width="37.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">False</span></div></foreignobject></g></g><g transform="translate(454.7000045776367, 544.8000183105469)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignobject height="24" width="32"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">True</span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g transform="translate(572.4000072479248, 601.3000183105469)" class="edgeLabel"><g transform="translate(-18.80000114440918, -12)" class="label"><foreignobject height="24" width="37.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">False</span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g transform="translate(319.15000438690186, 19.5)" id="flowchart-A-100" class="node default default flowchart-label"><rect height="39" width="59.150001525878906" y="-19.5" x="-29.575000762939453" ry="19.5" rx="19.5" style=""></rect><g transform="translate(-17.200000762939453, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="34.400001525878906"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">start</span></div></foreignobject></g></g><g transform="translate(319.15000438690186, 132.8000030517578)" id="flowchart-B-101" class="node default default flowchart-label"><polygon style="" transform="translate(-43.80000114440918,43.80000114440918)" class="label-container" points="43.80000114440918,0 87.60000228881836,-43.80000114440918 43.80000114440918,-87.60000228881836 0,-43.80000114440918"></polygon><g transform="translate(-16.80000114440918, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="33.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">x &lt; y</span></div></foreignobject></g></g><g transform="translate(65.9000015258789, 601.3000183105469)" id="flowchart-C-103" class="node default default flowchart-label"><rect height="39" width="131.8000030517578" y="-19.5" x="-65.9000015258789" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-58.400001525878906, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="116.80000305175781"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is less than y"</span></div></foreignobject></g></g><g transform="translate(416.8500051498413, 294.40000915527344)" id="flowchart-D-105" class="node default default flowchart-label"><polygon style="" transform="translate(-43.80000114440918,43.80000114440918)" class="label-container" points="43.80000114440918,0 87.60000228881836,-43.80000114440918 43.80000114440918,-87.60000228881836 0,-43.80000114440918"></polygon><g transform="translate(-16.80000114440918, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="33.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">x &gt; y</span></div></foreignobject></g></g><g transform="translate(261.3000030517578, 601.3000183105469)" id="flowchart-E-107" class="node default default flowchart-label"><rect height="39" width="159" y="-19.5" x="-79.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-72, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="144"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is greater than y"</span></div></foreignobject></g></g><g transform="translate(513.5500059127808, 460.00001525878906)" id="flowchart-F-109" class="node default default flowchart-label"><polygon style="" transform="translate(-47.80000114440918,47.80000114440918)" class="label-container" points="47.80000114440918,0 95.60000228881836,-47.80000114440918 47.80000114440918,-95.60000228881836 0,-47.80000114440918"></polygon><g transform="translate(-20.80000114440918, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="41.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">x == y</span></div></foreignobject></g></g><g transform="translate(454.7000045776367, 601.3000183105469)" id="flowchart-G-111" class="node default default flowchart-label"><rect height="39" width="127.80000305175781" y="-19.5" x="-63.900001525878906" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-56.400001525878906, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="112.80000305175781"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is equal to y"</span></div></foreignobject></g></g><g transform="translate(358.00000381469727, 690.3000183105469)" id="flowchart-H-113" class="node default default flowchart-label"><rect height="39" width="55.14999961853027" y="-19.5" x="-27.574999809265137" ry="19.5" rx="19.5" style=""></rect><g transform="translate(-15.199999809265137, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="30.399999618530273"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">stop</span></div></foreignobject></g></g></g></g></g></svg></div>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>While your computer may not notice a difference speed-wise between our first program and this revised program, consider how an online server running billions or trillions of these types of calculations each day could definitely be impacted by such a small coding decision.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>There is one final improvement we can make to our program. Notice how logically <code class="language-plaintext highlighter-rouge">elif x == y</code> is not a necessary evaluation to run. After all, if logically x is not less than y AND x is not greater than y, x MUST equal y. Therefore, we don’t have to run <code class="language-plaintext highlighter-rouge">elif x == y</code>. We can create a “catch-all,” default outcome using an <code class="language-plaintext highlighter-rouge">else</code> statement. We can revise as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s y? </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is less than y</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is greater than y</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is equal to y</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice how the relative complexity of this program has decreased through our revision.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>Our code can be represented as follows:</p>
+
+    <div class="mermaid" data-original-code="flowchart TD
+  A([start]) --&gt; B{x &lt; y}
+  B -- True --&gt; C[&quot;#quot;x is less than y#quot;&quot;]
+  B -- False --&gt; D{x &gt; y}
+  D -- True --&gt; E[&quot;#quot;x is greater than y#quot;&quot;]
+  D -- False --&gt; F[&quot;#quot;x is equal to y#quot;&quot;]
+  F --&gt; G([stop])
+  C --&gt; G
+  E --&gt; G
+" data-processed="true"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 534.6000366210938 556.2000122070312" style="max-width: 534.6000366210938px;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100%" id="mermaid-1728020486434"><style>#mermaid-1728020486434{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}#mermaid-1728020486434 .error-icon{fill:#a44141;}#mermaid-1728020486434 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-1728020486434 .edge-thickness-normal{stroke-width:2px;}#mermaid-1728020486434 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1728020486434 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1728020486434 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1728020486434 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1728020486434 .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-1728020486434 .marker.cross{stroke:lightgrey;}#mermaid-1728020486434 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-1728020486434 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#ccc;}#mermaid-1728020486434 .cluster-label text{fill:#F9FFFE;}#mermaid-1728020486434 .cluster-label span,#mermaid-1728020486434 p{color:#F9FFFE;}#mermaid-1728020486434 .label text,#mermaid-1728020486434 span,#mermaid-1728020486434 p{fill:#ccc;color:#ccc;}#mermaid-1728020486434 .node rect,#mermaid-1728020486434 .node circle,#mermaid-1728020486434 .node ellipse,#mermaid-1728020486434 .node polygon,#mermaid-1728020486434 .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-1728020486434 .flowchart-label text{text-anchor:middle;}#mermaid-1728020486434 .node .label{text-align:center;}#mermaid-1728020486434 .node.clickable{cursor:pointer;}#mermaid-1728020486434 .arrowheadPath{fill:lightgrey;}#mermaid-1728020486434 .edgePath .path{stroke:lightgrey;stroke-width:2.0px;}#mermaid-1728020486434 .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-1728020486434 .edgeLabel{background-color:hsl(0, 0%, 34.4117647059%);text-align:center;}#mermaid-1728020486434 .edgeLabel rect{opacity:0.5;background-color:hsl(0, 0%, 34.4117647059%);fill:hsl(0, 0%, 34.4117647059%);}#mermaid-1728020486434 .labelBkg{background-color:rgba(87.75, 87.75, 87.75, 0.5);}#mermaid-1728020486434 .cluster rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:rgba(255, 255, 255, 0.25);stroke-width:1px;}#mermaid-1728020486434 .cluster text{fill:#F9FFFE;}#mermaid-1728020486434 .cluster span,#mermaid-1728020486434 p{color:#F9FFFE;}#mermaid-1728020486434 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(20, 1.5873015873%, 12.3529411765%);border:1px solid rgba(255, 255, 255, 0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1728020486434 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#ccc;}#mermaid-1728020486434 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="10" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="0" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-B" id="L-A-B-0" d="M260.3000030517578,39L260.3000030517578,43.166666666666664C260.3000030517578,47.333333333333336,260.3000030517578,55.666666666666664,260.3833363850911,64.08333365122479C260.4666697184245,72.50000063578291,260.6333363850911,81.00000127156582,260.7166697184245,85.25000158945728L260.8000030517578,89.50000190734873"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-C" id="L-B-C-0" d="M229.85988623608193,146.15988738049103L202.5332387843814,157.39990716766178C175.20659133268092,168.63992695483256,120.55329642927991,191.1199665291741,93.22664897757942,215.8266534916378C65.9000015258789,240.53334045410156,65.9000015258789,267.4666748046875,65.9000015258789,294.40000915527344C65.9000015258789,321.3333435058594,65.9000015258789,348.2666778564453,65.9000015258789,367.90001169840497C65.9000015258789,387.53334554036456,65.9000015258789,399.86667887369794,65.9000015258789,406.03334554036456L65.9000015258789,412.20001220703125"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-D" id="L-B-D-0" d="M284.77344664323226,153.12655678999542L296.97787283847646,163.20546500891547C309.1822990337206,173.28437322783552,333.59115142420893,193.44218966567556,345.8789109527864,209.77109820248702C358.16667048136395,226.10000673929846,358.3333371480306,238.6000073750813,358.41667048136395,244.85000769297275L358.50000381469727,251.10000801086414"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-E" id="L-D-E-0" d="M334.6382570369182,314.8382635219036L322.4152147060582,324.8985549694249C310.1921723751981,334.9588464169462,285.74608771347795,355.0794293119887,273.5230453826179,371.3063874261766C261.3000030517578,387.53334554036456,261.3000030517578,399.86667887369794,261.3000030517578,406.03334554036456L261.3000030517578,412.20001220703125"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-F" id="L-D-F-0" d="M382.3617485142722,314.83826178541034L394.418124524833,324.8985535223472C406.4745005353937,334.958845259284,430.58725255651524,355.0794287331576,442.64362856707595,371.3063871367611C454.7000045776367,387.53334554036456,454.7000045776367,399.86667887369794,454.7000045776367,406.03334554036456L454.7000045776367,412.20001220703125"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-F LE-G" id="L-F-G-0" d="M454.7000045776367,451.20001220703125L454.7000045776367,455.36667887369794C454.7000045776367,459.53334554036456,454.7000045776367,467.86667887369794,427.06250445048016,478.3925427790156C399.42500432332355,488.9184066843332,344.15000406901044,501.6368011616352,316.5125039418538,507.9959984002862L288.87500381469727,514.3551956389372"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-G" id="L-C-G-0" d="M65.9000015258789,451.20001220703125L65.9000015258789,455.36667887369794C65.9000015258789,459.53334554036456,65.9000015258789,467.86667887369794,93.87083498636882,478.4033664168842C121.84166844685872,488.9400539600704,177.78333536783853,501.6800957131095,205.75416882832846,508.0501165896291L233.72500228881836,514.4201374661486"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-E LE-G" id="L-E-G-0" d="M261.3000030517578,451.20001220703125L261.3000030517578,455.36667887369794C261.3000030517578,459.53334554036456,261.3000030517578,467.86667887369794,261.3000030517578,476.20001220703125C261.3000030517578,484.53334554036456,261.3000030517578,492.86667887369794,261.3000030517578,497.03334554036456L261.3000030517578,501.20001220703125"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g transform="translate(65.9000015258789, 294.40000915527344)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignobject height="24" width="32"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">True</span></div></foreignobject></g></g><g transform="translate(358.00000381469727, 213.60000610351562)" class="edgeLabel"><g transform="translate(-18.80000114440918, -12)" class="label"><foreignobject height="24" width="37.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">False</span></div></foreignobject></g></g><g transform="translate(261.3000030517578, 375.20001220703125)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignobject height="24" width="32"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">True</span></div></foreignobject></g></g><g transform="translate(454.7000045776367, 375.20001220703125)" class="edgeLabel"><g transform="translate(-18.80000114440918, -12)" class="label"><foreignobject height="24" width="37.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">False</span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g transform="translate(260.3000030517578, 19.5)" id="flowchart-A-152" class="node default default flowchart-label"><rect height="39" width="59.150001525878906" y="-19.5" x="-29.575000762939453" ry="19.5" rx="19.5" style=""></rect><g transform="translate(-17.200000762939453, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="34.400001525878906"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">start</span></div></foreignobject></g></g><g transform="translate(260.3000030517578, 132.8000030517578)" id="flowchart-B-153" class="node default default flowchart-label"><polygon style="" transform="translate(-43.80000114440918,43.80000114440918)" class="label-container" points="43.80000114440918,0 87.60000228881836,-43.80000114440918 43.80000114440918,-87.60000228881836 0,-43.80000114440918"></polygon><g transform="translate(-16.80000114440918, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="33.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">x &lt; y</span></div></foreignobject></g></g><g transform="translate(65.9000015258789, 431.70001220703125)" id="flowchart-C-155" class="node default default flowchart-label"><rect height="39" width="131.8000030517578" y="-19.5" x="-65.9000015258789" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-58.400001525878906, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="116.80000305175781"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is less than y"</span></div></foreignobject></g></g><g transform="translate(358.00000381469727, 294.40000915527344)" id="flowchart-D-157" class="node default default flowchart-label"><polygon style="" transform="translate(-43.80000114440918,43.80000114440918)" class="label-container" points="43.80000114440918,0 87.60000228881836,-43.80000114440918 43.80000114440918,-87.60000228881836 0,-43.80000114440918"></polygon><g transform="translate(-16.80000114440918, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="33.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">x &gt; y</span></div></foreignobject></g></g><g transform="translate(261.3000030517578, 431.70001220703125)" id="flowchart-E-159" class="node default default flowchart-label"><rect height="39" width="159" y="-19.5" x="-79.5" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-72, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="144"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is greater than y"</span></div></foreignobject></g></g><g transform="translate(454.7000045776367, 431.70001220703125)" id="flowchart-F-161" class="node default default flowchart-label"><rect height="39" width="127.80000305175781" y="-19.5" x="-63.900001525878906" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-56.400001525878906, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="112.80000305175781"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is equal to y"</span></div></foreignobject></g></g><g transform="translate(261.3000030517578, 520.7000122070312)" id="flowchart-G-163" class="node default default flowchart-label"><rect height="39" width="55.14999961853027" y="-19.5" x="-27.574999809265137" ry="19.5" rx="19.5" style=""></rect><g transform="translate(-15.199999809265137, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="30.399999618530273"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">stop</span></div></foreignobject></g></g></g></g></g></svg></div>
+  </li>
+</ul>
+
+<a data-id="" id="or" style="top: -57.6px;"></a><h2><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#or">or</a></h2>
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p><code class="language-plaintext highlighter-rouge">or</code> allows your program to decide between one or more alternatives. For example, we could further edit our program as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s y? </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is not equal to y</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is equal to y</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice that the result of our program is the same, but the complexity is decreased. The efficiency of our code is increased.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>At this point, our code is pretty great. However, could the design be further improved? We could further edit our code as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s y? </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is not equal to y</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is equal to y</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice how we removed the <code class="language-plaintext highlighter-rouge">or</code> entirely and simply asked, “Is x not equal to y?” We ask one and only one question. Very efficient!</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>For the purpose of illustration, we could also change our code as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s y? </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is equal to y</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">x is not equal to y</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice that the <code class="language-plaintext highlighter-rouge">==</code> operator evaluates if what is on the left and right are equal to one another. The use of double equal signs is very important. If you use only one equal sign, an error will likely be thrown by the compiler.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>Our code can be illustrated as follows:</p>
+
+    <div class="mermaid" data-original-code="flowchart TD
+  A([start]) --&gt; B{x == y}
+  B -- True --&gt; C[&quot;#quot;x is equal to y#quot;&quot;]
+  B -- False --&gt; E[&quot;#quot;x is not equal to y#quot;&quot;]
+  C --&gt; F([stop])
+  E --&gt; F
+" data-processed="true"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="-8 -8 350.4000244140625 402.6000061035156" style="max-width: 350.4000244140625px;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100%" id="mermaid-1728020486438"><style>#mermaid-1728020486438{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}#mermaid-1728020486438 .error-icon{fill:#a44141;}#mermaid-1728020486438 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-1728020486438 .edge-thickness-normal{stroke-width:2px;}#mermaid-1728020486438 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1728020486438 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1728020486438 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1728020486438 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1728020486438 .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-1728020486438 .marker.cross{stroke:lightgrey;}#mermaid-1728020486438 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-1728020486438 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#ccc;}#mermaid-1728020486438 .cluster-label text{fill:#F9FFFE;}#mermaid-1728020486438 .cluster-label span,#mermaid-1728020486438 p{color:#F9FFFE;}#mermaid-1728020486438 .label text,#mermaid-1728020486438 span,#mermaid-1728020486438 p{fill:#ccc;color:#ccc;}#mermaid-1728020486438 .node rect,#mermaid-1728020486438 .node circle,#mermaid-1728020486438 .node ellipse,#mermaid-1728020486438 .node polygon,#mermaid-1728020486438 .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-1728020486438 .flowchart-label text{text-anchor:middle;}#mermaid-1728020486438 .node .label{text-align:center;}#mermaid-1728020486438 .node.clickable{cursor:pointer;}#mermaid-1728020486438 .arrowheadPath{fill:lightgrey;}#mermaid-1728020486438 .edgePath .path{stroke:lightgrey;stroke-width:2.0px;}#mermaid-1728020486438 .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-1728020486438 .edgeLabel{background-color:hsl(0, 0%, 34.4117647059%);text-align:center;}#mermaid-1728020486438 .edgeLabel rect{opacity:0.5;background-color:hsl(0, 0%, 34.4117647059%);fill:hsl(0, 0%, 34.4117647059%);}#mermaid-1728020486438 .labelBkg{background-color:rgba(87.75, 87.75, 87.75, 0.5);}#mermaid-1728020486438 .cluster rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:rgba(255, 255, 255, 0.25);stroke-width:1px;}#mermaid-1728020486438 .cluster text{fill:#F9FFFE;}#mermaid-1728020486438 .cluster span,#mermaid-1728020486438 p{color:#F9FFFE;}#mermaid-1728020486438 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(20, 1.5873015873%, 12.3529411765%);border:1px solid rgba(255, 255, 255, 0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1728020486438 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#ccc;}#mermaid-1728020486438 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="10" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="12" markerWidth="12" markerUnits="userSpaceOnUse" refY="5" refX="0" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart" id="flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-B" id="L-A-B-0" d="M160.00000381469727,39L160.00000381469727,43.166666666666664C160.00000381469727,47.333333333333336,160.00000381469727,55.666666666666664,160.0833371480306,64.08333365122478C160.16667048136392,72.50000063578288,160.3333371480306,81.00000127156576,160.41667048136392,85.2500015894572L160.50000381469727,89.50000190734865"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-C" id="L-B-C-0" d="M135.10707908407042,159.70707946554015L123.23923282437183,170.02256723853606C111.37138656467324,180.33805501153196,87.63569404527607,200.96903055752378,75.76784778557749,217.45118499718637C63.900001525878906,233.93333943684897,63.900001525878906,246.26667277018228,63.900001525878906,252.43333943684897L63.900001525878906,258.6000061035156"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-E" id="L-B-E-0" d="M185.89292651883207,159.7070776773349L197.59410644961267,170.022565748365C209.29528638039324,180.33805381939513,232.69764624195443,200.96902996145536,244.39882617273506,217.45118469915215C256.1000061035156,233.93333943684897,256.1000061035156,246.26667277018228,256.1000061035156,252.43333943684897L256.1000061035156,258.6000061035156"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-F" id="L-C-F-0" d="M63.900001525878906,297.6000061035156L63.900001525878906,301.7666727701823C63.900001525878906,305.93333943684894,63.900001525878906,314.2666727701823,75.32083511352539,323.7218626683349C86.74166870117188,333.1770525664875,109.58333587646484,343.7540990294594,121.00416946411133,349.04262226094534L132.4250030517578,354.3311454924313"></path><path marker-end="url(#flowchart-pointEnd)" style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-E LE-F" id="L-E-F-0" d="M256.1000061035156,297.6000061035156L256.1000061035156,301.7666727701823C256.1000061035156,305.93333943684894,256.1000061035156,314.2666727701823,244.67917251586914,323.7218626683349C233.25833892822266,333.1770525664875,210.4166717529297,343.7540990294594,198.9958381652832,349.04262226094534L187.57500457763672,354.3311454924313"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g transform="translate(63.900001525878906, 221.60000610351562)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignobject height="24" width="32"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">True</span></div></foreignobject></g></g><g transform="translate(256.1000061035156, 221.60000610351562)" class="edgeLabel"><g transform="translate(-18.80000114440918, -12)" class="label"><foreignobject height="24" width="37.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel">False</span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g transform="translate(160.00000381469727, 19.5)" id="flowchart-A-188" class="node default default flowchart-label"><rect height="39" width="59.150001525878906" y="-19.5" x="-29.575000762939453" ry="19.5" rx="19.5" style=""></rect><g transform="translate(-17.200000762939453, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="34.400001525878906"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">start</span></div></foreignobject></g></g><g transform="translate(160.00000381469727, 136.8000030517578)" id="flowchart-B-189" class="node default default flowchart-label"><polygon style="" transform="translate(-47.80000114440918,47.80000114440918)" class="label-container" points="47.80000114440918,0 95.60000228881836,-47.80000114440918 47.80000114440918,-95.60000228881836 0,-47.80000114440918"></polygon><g transform="translate(-20.80000114440918, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="41.60000228881836"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">x == y</span></div></foreignobject></g></g><g transform="translate(63.900001525878906, 278.1000061035156)" id="flowchart-C-191" class="node default default flowchart-label"><rect height="39" width="127.80000305175781" y="-19.5" x="-63.900001525878906" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-56.400001525878906, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="112.80000305175781"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is equal to y"</span></div></foreignobject></g></g><g transform="translate(256.1000061035156, 278.1000061035156)" id="flowchart-E-193" class="node default default flowchart-label"><rect height="39" width="156.60000610351562" y="-19.5" x="-78.30000305175781" ry="0" rx="0" style="" class="basic label-container"></rect><g transform="translate(-70.80000305175781, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="141.60000610351562"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">"x is not equal to y"</span></div></foreignobject></g></g><g transform="translate(160.00000381469727, 367.1000061035156)" id="flowchart-F-195" class="node default default flowchart-label"><rect height="39" width="55.14999961853027" y="-19.5" x="-27.574999809265137" ry="19.5" rx="19.5" style=""></rect><g transform="translate(-15.199999809265137, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="30.399999618530273"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel">stop</span></div></foreignobject></g></g></g></g></g></svg></div>
+  </li>
+</ul>
+
+<a data-id="" id="and" style="top: -57.6px;"></a><h2><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#and">and</a></h2>
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Similar to <code class="language-plaintext highlighter-rouge">or</code>, <code class="language-plaintext highlighter-rouge">and</code> can be used within conditional statements.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>Execute in the terminal window <code class="language-plaintext highlighter-rouge">code grade.py</code>. Start your new program as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">score</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">Score: </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span> <span class="ow">and</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: A</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span><span class="mi">80</span> <span class="ow">and</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: B</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span><span class="mi">70</span> <span class="ow">and</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: C</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span><span class="mi">60</span> <span class="ow">and</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: D</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: F</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice that by executing <code class="language-plaintext highlighter-rouge">python grade.py</code>, you will be able to input a score and get a grade. However, notice how there is potential for bugs.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>Typically, we do not want to ever trust our users to input the correct information. We could improve our code as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">score</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">Score: </span><span class="sh">"</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="mi">90</span> <span class="o">&lt;=</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: A</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="mi">80</span> <span class="o">&lt;=</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">90</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: B</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="mi">70</span> <span class="o">&lt;=</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">80</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: C</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="mi">60</span> <span class="o">&lt;=</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">70</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: D</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: F</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice how Python allows you to chain together the operators and conditions in a way quite uncommon to other programming languages.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>Still, we can further improve our program:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">score</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">Score: </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: A</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: B</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: C</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: D</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Grade: F</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice how the program is improved by asking fewer questions. This makes our program easier to read and far more maintainable in the future.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>You can learn more in Python’s documentation on <a href="https://docs.python.org/3/tutorial/controlflow.html">control flow</a>.</li>
+</ul>
+
+<a data-id="" id="modulo" style="top: -57.6px;"></a><h2><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#modulo">Modulo</a></h2>
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>In mathematics, parity refers to whether a number is either even or odd.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>The modulo <code class="language-plaintext highlighter-rouge">%</code> operator in programming allows one to see if two numbers divide evenly or divide and have a remainder.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>For example, 4 % 2 would result in zero, because it evenly divides. However, 3 % 2 does not divide evenly and would result in a number other than zero!</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>In the terminal window, create a new program by typing <code class="language-plaintext highlighter-rouge">code parity.py</code>. In the text editor window, type your code as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Even</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Odd</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice how our users can type in any number 1 or greater to see if it is even or odd.</p>
+  </li>
+</ul>
+
+<a data-id="" id="creating-our-own-parity-function" style="top: -57.6px;"></a><h2><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#creating-our-own-parity-function">Creating Our Own Parity Function</a></h2>
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>As discussed in Lecture 0, you will find it useful to create a function of your own!</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>We can create our own function to check whether a number is even or odd. Adjust your code as follows:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Even</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Odd</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="nf">main</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <p>Notice that our <code class="language-plaintext highlighter-rouge">if</code> statement <code class="language-plaintext highlighter-rouge">is_even(x)</code> works even though there is no operator there. This is because our function returns a <code class="language-plaintext highlighter-rouge">bool</code> (or boolean), true or false, back to the main function. The <code class="language-plaintext highlighter-rouge">if</code> statement simply evaluates whether or not <code class="language-plaintext highlighter-rouge">is_even</code> of <code class="language-plaintext highlighter-rouge">x</code> is true or false.</p>
+  </li>
+</ul>
+
+<a data-id="" id="pythonic" style="top: -57.6px;"></a><h2><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#pythonic">Pythonic</a></h2>
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>In the programming world, there are types of programming that are called “Pythonic” in nature. That is, there are ways to program that are sometimes only seen in Python programming. Consider the following revision to our program:
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Even</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Odd</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">True</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="bp">False</span>
+
+
+<span class="nf">main</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <p>Notice that this return statement in our code is almost like a sentence in English. This is a unique way of coding only seen in Python.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>
+    <p>We can further revise our code and make it more and more readable:</p>
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s x? </span><span class="sh">"</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Even</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Odd</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+<span class="nf">main</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <p>Notice that the program will evaluate what is happening within the <code class="language-plaintext highlighter-rouge">n % 2 == 0</code> as either true or false and simply return that to the main function.</p>
+  </li>
+</ul>
+
+<a data-id="" id="match" style="top: -57.6px;"></a><h1><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#match"><code class="language-plaintext highlighter-rouge">match</code></a></h1>
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Similar to <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">elif</code>, and <code class="language-plaintext highlighter-rouge">else</code> statements, <code class="language-plaintext highlighter-rouge">match</code> statements can be used to conditionally run code that matches certain values.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Consider the following program:
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">name</span> <span class="o">=</span> <span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s your name? </span><span class="sh">"</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="sh">"</span><span class="s">Harry</span><span class="sh">"</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Gryffindor</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="sh">"</span><span class="s">Hermione</span><span class="sh">"</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Gryffindor</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="sh">"</span><span class="s">Ron</span><span class="sh">"</span><span class="p">:</span> 
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Gryffindor</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="sh">"</span><span class="s">Draco</span><span class="sh">"</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Slytherin</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Who?</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice the first three conditional statements print the same response.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>We can improve this code slightly with the use of the <code class="language-plaintext highlighter-rouge">or</code> keyword:
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">name</span> <span class="o">=</span> <span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s your name? </span><span class="sh">"</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="sh">"</span><span class="s">Harry</span><span class="sh">"</span> <span class="ow">or</span> <span class="n">name</span> <span class="o">==</span> <span class="sh">"</span><span class="s">Hermione</span><span class="sh">"</span> <span class="ow">or</span> <span class="n">name</span> <span class="o">==</span> <span class="sh">"</span><span class="s">Ron</span><span class="sh">"</span><span class="p">:</span> 
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Gryffindor</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="sh">"</span><span class="s">Draco</span><span class="sh">"</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Slytherin</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Who?</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice the number of <code class="language-plaintext highlighter-rouge">elif</code> statements has decreased, improving the readability of our code.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Alternatively, we can use <code class="language-plaintext highlighter-rouge">match</code> statements to map names to houses. Consider the following code:
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">name</span> <span class="o">=</span> <span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s your name? </span><span class="sh">"</span><span class="p">)</span>
+
+  <span class="n">match</span> <span class="n">name</span><span class="p">:</span> 
+      <span class="n">case</span> <span class="sh">"</span><span class="s">Harry</span><span class="sh">"</span><span class="p">:</span>
+          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Gryffindor</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">case</span> <span class="sh">"</span><span class="s">Hermione</span><span class="sh">"</span><span class="p">:</span>
+          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Gryffindor</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">case</span> <span class="sh">"</span><span class="s">Ron</span><span class="sh">"</span><span class="p">:</span> 
+          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Gryffindor</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">case</span> <span class="sh">"</span><span class="s">Draco</span><span class="sh">"</span><span class="p">:</span>
+          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Slytherin</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">case</span> <span class="n">_</span><span class="p">:</span>
+          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Who?</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice the use of the <code class="language-plaintext highlighter-rouge">_</code> symbol in the last case. This will match with any input, resulting in similar behavior as an <code class="language-plaintext highlighter-rouge">else</code> statement.</p>
+  </li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>A match statement compares the value following the <code class="language-plaintext highlighter-rouge">match</code> keyword with each of the values following the <code class="language-plaintext highlighter-rouge">case</code> keywords. In the event a match is found, the respective indented code section is executed, and the program stops the matching.</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>We can improve the code:
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">name</span> <span class="o">=</span> <span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">What</span><span class="sh">'</span><span class="s">s your name? </span><span class="sh">"</span><span class="p">)</span>
+
+  <span class="n">match</span> <span class="n">name</span><span class="p">:</span> 
+      <span class="n">case</span> <span class="sh">"</span><span class="s">Harry</span><span class="sh">"</span> <span class="o">|</span> <span class="sh">"</span><span class="s">Hermione</span><span class="sh">"</span> <span class="o">|</span> <span class="sh">"</span><span class="s">Ron</span><span class="sh">"</span><span class="p">:</span>
+          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Gryffindor</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">case</span> <span class="sh">"</span><span class="s">Draco</span><span class="sh">"</span><span class="p">:</span>
+          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Slytherin</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">case</span> <span class="n">_</span><span class="p">:</span>
+          <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Who?</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Notice, the use of the single vertical bar <code class="language-plaintext highlighter-rouge">|</code>. Much like the <code class="language-plaintext highlighter-rouge">or</code> keyword, this allows us to check for multiple values in the same <code class="language-plaintext highlighter-rouge">case</code> statement.</p>
+  </li>
+</ul>
+
+<a data-id="" id="summing-up" style="top: -57.6px;"></a><h2><a data-id="" href="https://cs50.harvard.edu/python/2022/notes/1/#summing-up">Summing Up</a></h2>
+<p>You now have the power within Python to use conditional statements to ask questions and have your program take action accordingly. In this lecture, we discussed…</p>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Conditionals;</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><code class="language-plaintext highlighter-rouge">if</code> Statements;</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Control flow, <code class="language-plaintext highlighter-rouge">elif</code>, and <code class="language-plaintext highlighter-rouge">else</code>;</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><code class="language-plaintext highlighter-rouge">or</code>;</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><code class="language-plaintext highlighter-rouge">and</code>;</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Modulo;</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Creating your own function;</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>Pythonic coding;</li>
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span>and <code class="language-plaintext highlighter-rouge">match</code>.</li>
+</ul>
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+        
+ 
+        <script src="./Lecture 1 - CS50&#39;s Introduction to Programming with Python_files/page.js.download"></script>
+
+    
+
+
+<div class="mermaidTooltip" style="opacity: 0;"></div></body></html>
